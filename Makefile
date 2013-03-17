@@ -33,6 +33,7 @@ help:
 	@echo '   dropbox_upload                   upload the web site via Dropbox    '
 	@echo '   ftp_upload                       upload the web site via FTP        '
 	@echo '   github                           upload the web site via gh-pages   '
+	@echo '   gh_userpage                      upload the web site via master     '
 	@echo '                                                                       '
 
 
@@ -70,11 +71,11 @@ ftp_upload: publish
 	lftp ftp://$(FTP_USER)@$(FTP_HOST) -e "mirror -R $(OUTPUTDIR) $(FTP_TARGET_DIR) ; quit"
 
 github: publish
-	ghp-import $(OUTPUTDIR)
+	ghp-import $(OUTPUTDIR) -m "Update Site"
 	git push origin gh-pages
 
 gh_userpage: publish
-	ghp-import $(OUTPUTDIR) -b master
+	ghp-import $(OUTPUTDIR) -b master -m "Update Site"
 	git push origin master
 
 .PHONY: html help clean regenerate serve devserver publish ssh_upload rsync_upload dropbox_upload ftp_upload github
