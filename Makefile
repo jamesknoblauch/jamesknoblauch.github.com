@@ -73,4 +73,8 @@ github: publish
 	ghp-import $(OUTPUTDIR)
 	git push origin gh-pages
 
+gh_userpage: publish
+	ghp-import $(OUTPUTDIR) -b master
+	git push origin master
+
 .PHONY: html help clean regenerate serve devserver publish ssh_upload rsync_upload dropbox_upload ftp_upload github
