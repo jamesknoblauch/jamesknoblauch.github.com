@@ -23,3 +23,5 @@ DEFAULT_PAGINATION = 10
 
 FILES_TO_COPY = (('static/robots.txt', 'robots.txt'),
                  ('static/CNAME', 'CNAME'),)
+
+THEME = "mnmlist"
