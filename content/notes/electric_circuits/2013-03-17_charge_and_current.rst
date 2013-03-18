@@ -2,8 +2,8 @@ Charge and Current
 ##################
 
 :date: 2013-03-17 2:44
-:tags: circuits, electricity, physics, math, engineering, eecs
-:category: Electric Circuits
+:tags: circuits, electricity, physics, math, engineering, eecs, notes
+:category: Notes
 :slug: charge-and-current
 :author: James Knoblauch
 :summary: Notes on electric charge and current.

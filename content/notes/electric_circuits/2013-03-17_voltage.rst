@@ -2,8 +2,8 @@ Voltage
 #######
 
 :date: 2013-03-17 15:54
-:tags: circuits, electricity, physics, math, engineering, eecs, voltage
-:category: Electric Circuits
+:tags: circuits, electricity, physics, math, engineering, eecs, voltage, notes
+:category: Notes
 :slug: voltage
 :author: James Knoblauch
 :summary: Notes on voltage.

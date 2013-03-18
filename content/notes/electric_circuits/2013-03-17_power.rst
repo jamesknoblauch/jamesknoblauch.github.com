@@ -2,8 +2,8 @@ Power
 #######
 
 :date: 2013-03-17 16:13
-:tags: circuits, electricity, physics, math, engineering, eecs, power
-:category: Electric Circuits
+:tags: circuits, electricity, physics, math, engineering, eecs, power, notes
+:category: Notes
 :slug: power
 :author: James Knoblauch
 :summary: Notes on power.
