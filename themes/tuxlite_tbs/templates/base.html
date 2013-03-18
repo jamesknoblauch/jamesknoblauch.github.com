@@ -18,22 +18,6 @@
     <link href="{{ SITEURL }}/theme/local.css" rel="stylesheet">
     <link href="{{ SITEURL }}/theme/pygments.css" rel="stylesheet">
     
-    <script type="text/x-mathjax-config">
-       MathJax.Hub.Config({
-           config: ["MMLorHTML.js"],
-           jax: ["input/TeX","input/MathML","output/HTML-CSS","output/NativeMML"],
-           TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"], equationNumbers: { autoNumber: "AMS" } },
-           extensions: ["tex2jax.js","mml2jax.js","MathMenu.js","MathZoom.js"],
-           tex2jax: { 
-               inlineMath: [ [\'$\',\'$\'] ],
-               displayMath: [ [\'$$\',\'$$\'] ],
-               processEscapes: true },
-           "HTML-CSS": {
-               styles: { ".MathJax .mo, .MathJax .mi": {color: "black ! important"}}
-           }
-       });
-    </script>
-    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type= "text/javascript"></script>
 </head>
 
 <body>
@@ -154,5 +138,40 @@
 <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap-collapse.js"></script>
 {% include "analytics.html" %}
 {% include "github.html" %} 
+
+<!-- MathJax Config -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+    });
+</script>
+
+<!--
+<script type="text/x-mathjax-config">
+   MathJax.Hub.Config({
+       config: ["MMLorHTML.js"],
+       jax: ["input/TeX","input/MathML","output/HTML-CSS","output/NativeMML"],
+       TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"], equationNumbers: { autoNumber: "AMS" } },
+       extensions: ["tex2jax.js","mml2jax.js","MathMenu.js","MathZoom.js"],
+       tex2jax: { 
+           inlineMath: [ [\'$\',\'$\'] ],
+           displayMath: [ [\'$$\',\'$$\'] ],
+           processEscapes: true },
+       "HTML-CSS": {
+           styles: { ".MathJax .mo, .MathJax .mi": {color: "black ! important"}}
+       }
+   });
+</script>
+-->
+
+<!-- Mathjax Secure -->
+<script type="text/javascript" src="https://d3eoax9i5htok0.cloudfront.net/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
