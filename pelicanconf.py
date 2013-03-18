@@ -9,15 +9,10 @@ TIMEZONE = 'America/Detroit'
 
 DEFAULT_LANG = u'en'
 
-# Blogroll
-LINKS =  (('Pelican', 'http://docs.notmyidea.org/alexis/pelican/'),
-          ('Python.org', 'http://python.org'),
-          ('Jinja2', 'http://jinja.pocoo.org'),
-          ('You can modify those links in your config file', '#'),)
-
 # Social widget
-SOCIAL = (('You can add links in your config file', '#'),
-          ('Another social link', '#'),)
+SOCIAL = (('github', 'https://github.com/jamesknoblauch'),
+          ('linkedin', 'https://www.linkedin.com/in/jakno'),
+          ('g+', 'https://plus.google.com/u/0/107070037103282736472'),)
 
 DEFAULT_PAGINATION = 10
 
