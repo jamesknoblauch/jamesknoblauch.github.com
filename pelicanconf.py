@@ -20,7 +20,3 @@ FILES_TO_COPY = (('static/robots.txt', 'robots.txt'),
                  ('static/CNAME', 'CNAME'),)
 
 THEME = "themes/tuxlite_tbs"
-
-# latex plugin
-PLUGINS = ["latex"]
-LATEX = 'article'

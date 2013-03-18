@@ -7,7 +7,6 @@ Charge and Current
 :slug: charge-and-current
 :author: James Knoblauch
 :summary: Notes on electric charge and current.
-:latex:
 
 
 Definitions

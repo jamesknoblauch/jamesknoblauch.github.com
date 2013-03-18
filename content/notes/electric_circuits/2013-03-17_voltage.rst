@@ -7,7 +7,6 @@ Voltage
 :slug: voltage
 :author: James Knoblauch
 :summary: Notes on voltage.
-:latex:
 
 
 Definitions

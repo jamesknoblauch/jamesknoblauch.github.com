@@ -7,7 +7,6 @@ Power
 :slug: power
 :author: James Knoblauch
 :summary: Notes on power.
-:latex:
 
 
 
