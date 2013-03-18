@@ -16,6 +16,9 @@ SOCIAL = (('github', 'https://github.com/jamesknoblauch'),
 
 DEFAULT_PAGINATION = 10
 
+#TEMPLATE_PAGES = {'blog/index.html': 'index.html',
+#                  'index.html': 'home.html'}
+
 FILES_TO_COPY = (('static/robots.txt', 'robots.txt'),
                  ('static/CNAME', 'CNAME'),)
 
