@@ -18,24 +18,23 @@
     <link href="./theme/local.css" rel="stylesheet">
     <link href="./theme/pygments.css" rel="stylesheet">
     
-            
-    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type= "text/javascript">
+    <script type="text/x-mathjax-config">
        MathJax.Hub.Config({
            config: ["MMLorHTML.js"],
            jax: ["input/TeX","input/MathML","output/HTML-CSS","output/NativeMML"],
            TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"], equationNumbers: { autoNumber: "AMS" } },
            extensions: ["tex2jax.js","mml2jax.js","MathMenu.js","MathZoom.js"],
            tex2jax: { 
-               inlineMath: [ ['$','$'] ],
-               displayMath: [ ['$$','$$'] ],
+               inlineMath: [ [\'$\',\'$\'] ],
+               displayMath: [ [\'$$\',\'$$\'] ],
                processEscapes: true },
            "HTML-CSS": {
                styles: { ".MathJax .mo, .MathJax .mi": {color: "black ! important"}}
            }
        });
     </script>
-
-    </head>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type= "text/javascript"></script>
+</head>
 
 <body>
 
@@ -175,7 +174,7 @@ so <math xmlns="http://www.w3.org/1998/Math/MathML">
                 Categories
                 </li>
                 
-                                <li><a href="./category/electric-circuits.html">Electric Circuits</a></li>
+                                <li><a href="./category/notes.html">Notes</a></li>
                                 <li><a href="./category/testing.html">testing</a></li>
                                    
             </ul>

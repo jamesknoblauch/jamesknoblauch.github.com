@@ -18,7 +18,23 @@
     <link href="../theme/local.css" rel="stylesheet">
     <link href="../theme/pygments.css" rel="stylesheet">
     
-    </head>
+    <script type="text/x-mathjax-config">
+       MathJax.Hub.Config({
+           config: ["MMLorHTML.js"],
+           jax: ["input/TeX","input/MathML","output/HTML-CSS","output/NativeMML"],
+           TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"], equationNumbers: { autoNumber: "AMS" } },
+           extensions: ["tex2jax.js","mml2jax.js","MathMenu.js","MathZoom.js"],
+           tex2jax: { 
+               inlineMath: [ [\'$\',\'$\'] ],
+               displayMath: [ [\'$$\',\'$$\'] ],
+               processEscapes: true },
+           "HTML-CSS": {
+               styles: { ".MathJax .mo, .MathJax .mi": {color: "black ! important"}}
+           }
+       });
+    </script>
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type= "text/javascript"></script>
+</head>
 
 <body>
 
@@ -219,7 +235,7 @@ by <a class="url fn" href="../author/james-knoblauch.html">James Knoblauch</a>
 <ul>
     <li class="prev disabled"><a href="#">&larr; Previous</a></li>
 
-    <li class="active"><a href="../category/electric-circuits.html">1</a></li>
+    <li class="active"><a href="../category/notes.html">1</a></li>
 
     <li class="next disabled"><a href="#">&rarr; Next</a></li>
 
@@ -250,7 +266,7 @@ by <a class="url fn" href="../author/james-knoblauch.html">James Knoblauch</a>
                 Categories
                 </li>
                 
-                                <li><a href="../category/electric-circuits.html">Electric Circuits</a></li>
+                                <li><a href="../category/notes.html">Notes</a></li>
                                 <li><a href="../category/testing.html">testing</a></li>
                                    
             </ul>
