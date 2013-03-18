@@ -18,6 +18,23 @@
     <link href="./theme/local.css" rel="stylesheet">
     <link href="./theme/pygments.css" rel="stylesheet">
     
+            
+    <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type= "text/javascript">
+       MathJax.Hub.Config({
+           config: ["MMLorHTML.js"],
+           jax: ["input/TeX","input/MathML","output/HTML-CSS","output/NativeMML"],
+           TeX: { extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"], equationNumbers: { autoNumber: "AMS" } },
+           extensions: ["tex2jax.js","mml2jax.js","MathMenu.js","MathZoom.js"],
+           tex2jax: { 
+               inlineMath: [ ['$','$'] ],
+               displayMath: [ ['$$','$$'] ],
+               processEscapes: true },
+           "HTML-CSS": {
+               styles: { ".MathJax .mo, .MathJax .mi": {color: "black ! important"}}
+           }
+       });
+    </script>
+
     </head>
 
 <body>
@@ -49,18 +66,70 @@
     <div class="row">
 
         <div class="span9">
-        <ul>
-    <li><a href="./tag/eecs.html">eecs</a></li>
-    <li><a href="./tag/power.html">power</a></li>
-    <li><a href="./tag/circuits.html">circuits</a></li>
-    <li><a href="./tag/blog.html">blog</a></li>
-    <li><a href="./tag/electricity.html">electricity</a></li>
-    <li><a href="./tag/engineering.html">engineering</a></li>
-    <li><a href="./tag/voltage.html">voltage</a></li>
-    <li><a href="./tag/test.html">test</a></li>
-    <li><a href="./tag/physics.html">physics</a></li>
-    <li><a href="./tag/math.html">math</a></li>
-</ul>
+            <div class='article'>
+        <div class="content-title">
+            <h1>Voltage</h1>
+            Sun 17 March 2013
+
+by <a class="url fn" href="./author/james-knoblauch.html">James Knoblauch</a>
+ 
+
+
+        </div>
+	
+        <div><div class="section" id="definitions">
+<h2>Definitions</h2>
+<p><strong>Voltage</strong> (potential difference), <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mrow><mi>v</mi></mrow></math>, is a measure of the energy
+required to move a unit charge through a circuit element, measured in
+volts (V).</p>
+<p><strong>Energy</strong>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mrow><mi>w</mi></mrow></math>, is the capcity to do work, measured in Joules (J)</p>
+</div>
+<div class="section" id="mathematical-relationship">
+<h2>Mathematical Relationship</h2>
+<p>For energy <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mrow><mi>w</mi></mrow></math> and charge <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mrow><mi>q</mi></mrow></math>,</p>
+<div>
+<math xmlns="http://www.w3.org/1998/Math/MathML" mode="display">
+<mtable>
+<mtr>
+<mtd><mi>v</mi><mo>=</mo><mfrac>
+<mrow><mi>d</mi><mi>w</mi></mrow>
+<mrow><mi>d</mi><mi>q</mi></mrow></mfrac></mtd></mtr></mtable></math>
+</div>
+<p>For points <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mrow><mi>a</mi></mrow></math> and <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mrow><mi>b</mi></mrow></math>,</p>
+<div>
+<math xmlns="http://www.w3.org/1998/Math/MathML" mode="display">
+<mtable>
+<mtr>
+<mtd><msub><mi>v</mi>
+<mrow><mi>b</mi><mi>a</mi></mrow></msub><mo>=</mo><mo>-</mo><msub><mi>v</mi>
+<mrow><mi>a</mi><mi>b</mi></mrow></msub></mtd></mtr></mtable></math>
+</div>
+</div>
+<div class="section" id="units">
+<h2>Units</h2>
+<div>
+<math xmlns="http://www.w3.org/1998/Math/MathML" mode="display">
+<mtable>
+<mtr>
+<mtd><mn>1</mn><mi>V</mi><mo>=</mo><mn>1</mn><mfrac>
+<mrow><mi>J</mi></mrow>
+<mrow><mi>C</mi></mrow></mfrac><mo>=</mo><mn>1</mn><mfrac>
+<mrow><mi>N</mi><mo>⋅</mo><mi>m</mi></mrow>
+<mrow><mi>C</mi></mrow></mfrac></mtd></mtr></mtable></math>
+</div>
+</div>
+</div>
+	
+        <hr>
+    	   
+        <h2>Comments</h2>
+		    </div>
         </div>
         
         <div class="span3">
