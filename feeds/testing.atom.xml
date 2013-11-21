@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>jckno.com</title><link href="http://jckno.com/" rel="alternate"></link><link href="http://jckno.com/feeds/testing.atom.xml" rel="self"></link><id>http://jckno.com/</id><updated>2013-03-16T09:32:00-04:00</updated><entry><title>A test</title><link href="http://jckno.com/test.html" rel="alternate"></link><updated>2013-03-16T09:32:00-04:00</updated><author><name>James Knoblauch</name></author><id>tag:jckno.com,2013-03-16:test.html</id><summary type="html">&lt;p&gt;This is a test.&lt;/p&gt;
-</summary><category term="test"></category><category term="blog"></category></entry></feed>
