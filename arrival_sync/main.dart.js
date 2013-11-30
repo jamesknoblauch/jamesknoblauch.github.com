@@ -2299,29 +2299,23 @@ UnitField: {"": "Object;_canvas,_context,_rect,width,height,unit_count,_units,_u
     H.setRuntimeTypeInfo(t2, [Z.Unit]);
     this._units = t2;
     this._unit_queue = G.Heap$max(Z.Unit);
-    this._arrival_sync$_target = Z.Unit$(this._board.get$random_tile(), null, 15, "red");
+    this._arrival_sync$_target = Z.Unit$(this._board.get$random_tile(), null, C.JSInt_methods.$tdiv(this._board._tile_size, 2), "red");
     for (i = 0; i < t1; ++i) {
       t2 = this._units;
-      t3 = new Z.Unit(10, null, null, this._board.get$random_tile(), null, null, null, null);
-      t3._board = t3._tile.get$board();
-      t4 = t3._arrival_sync$_target;
-      if (t4 != null) {
-        t3._destination = t4._tile;
-        t3._calc_path$0();
+      t3 = this._board.get$random_tile();
+      t4 = this._arrival_sync$_target;
+      t4 = new Z.Unit(C.JSInt_methods.$tdiv(this._board._tile_size, 3), null, null, t3, null, null, null, t4);
+      t4._board = t4._tile.get$board();
+      t3 = t4._arrival_sync$_target;
+      if (t3 != null) {
+        t4._destination = t3._tile;
+        t4._calc_path$0();
       }
-      if (t3.color == null)
-        t3.color = Z.random_color();
+      if (t4.color == null)
+        t4.color = Z.random_color();
       if (i >= t2.length)
         throw H.ioore(t2, i);
-      t2[i] = t3;
-      t2 = this._units;
-      if (i >= t2.length)
-        throw H.ioore(t2, i);
-      t2 = t2[i];
-      t3 = this._arrival_sync$_target;
-      t2._arrival_sync$_target = t3;
-      t2._destination = t3._tile;
-      t2._calc_path$0();
+      t2[i] = t4;
       t2 = this._unit_queue;
       t3 = this._units;
       if (i >= t3.length)
@@ -2348,10 +2342,7 @@ UnitField: {"": "Object;_canvas,_context,_rect,width,height,unit_count,_units,_u
       max = this._unit_queue.extract$0();
       max.seek$0();
       max.draw_path$1(this._context);
-      t1 = max._destination_distance;
-      if (typeof t1 !== "number")
-        throw t1.$gt();
-      if (t1 > 0) {
+      if (!J.$eq(max._tile, max._arrival_sync$_target._tile)) {
         t1 = this._unit_queue;
         t1.nodes.push(max);
         t1._heapify_up$1(t1.nodes.length - 1);
@@ -2405,32 +2396,45 @@ UnitField$: function(_canvas, unit_count) {
 
 Unit: {"": "Object;size,color?,_board,_tile,_destination,_destination_distance,_path,_arrival_sync$_target",
   seek$0: function() {
-    var t1, t2;
-    t1 = this._destination_distance;
-    t2 = J.get$elevation$x(this._tile);
-    if (typeof t1 !== "number")
-      throw t1.$sub();
-    if (typeof t2 !== "number")
-      throw H.iae(t2);
-    this._destination_distance = t1 - t2;
+    var t1, t, t2, t3;
     t1 = this._path;
-    if (t1._head !== t1._tail)
+    if (t1._head !== t1._tail) {
+      t = this._tile;
       this._tile = t1.removeFirst$0();
+      t1 = this._destination_distance;
+      t2 = J.get$elevation$x(t);
+      t3 = J.get$elevation$x(this._tile);
+      if (typeof t2 !== "number")
+        throw t2.$sub();
+      if (typeof t3 !== "number")
+        throw H.iae(t3);
+      t3 = Math.abs(t2 - t3);
+      if (typeof t1 !== "number")
+        throw t1.$sub();
+      this._destination_distance = t1 - (t3 + 1);
+      P.print(this._destination_distance);
+    }
   },
   _calc_path$0: function() {
-    var t1, t, t2, t3;
+    var t1, previous, t, t2, t3, t4;
     t1 = this._board;
     this._path = t1.path$2(t1, this._tile, this._destination);
     this._destination_distance = 0;
-    for (t1 = this._path, t1.toString, t1 = P._ListQueueIterator$(t1); t1.moveNext$0();) {
+    t1 = this._path;
+    previous = t1.get$first(t1);
+    for (t1 = this._path, t1.toString, t1 = P._ListQueueIterator$(t1); t1.moveNext$0(); previous = t) {
       t = t1._collection$_current;
       t2 = this._destination_distance;
       t3 = J.get$elevation$x(t);
+      t4 = J.get$elevation$x(previous);
+      if (typeof t3 !== "number")
+        throw t3.$sub();
+      if (typeof t4 !== "number")
+        throw H.iae(t4);
+      t4 = Math.abs(t3 - t4);
       if (typeof t2 !== "number")
         throw t2.$add();
-      if (typeof t3 !== "number")
-        throw H.iae(t3);
-      this._destination_distance = t2 + t3;
+      this._destination_distance = t2 + (t4 + 1);
     }
     return this._path;
   },
@@ -2576,7 +2580,7 @@ Board: {"": "Object;_tiles,_board_graph,_canvas,_context,_rect,_tile_size,_width
       }
   },
   path$2: function(_, source, target) {
-    var $D = D.Dijkstra$(this._board_graph, Z.Tile);
+    var $D = D.Dijkstra$(this._board_graph, 1, Z.Tile);
     return $D.search$2($D, source, target);
   },
   draw$1: function(context) {
@@ -5218,6 +5222,16 @@ ListQueue: {"": "IterableBase;_table,_head,_tail,_modificationCount",
   get$length: function(_) {
     return (this._tail - this._head & this._table.length - 1) >>> 0;
   },
+  get$first: function(_) {
+    var t1, t2;
+    t1 = this._head;
+    if (t1 === this._tail)
+      throw H.wrapException(P.StateError$("No elements"));
+    t2 = this._table;
+    if (t1 < 0 || t1 >= t2.length)
+      throw H.ioore(t2, t1);
+    return t2[t1];
+  },
   add$1: function(_, element) {
     this._add$1(element);
   },
@@ -6126,27 +6140,27 @@ EdgeWeightedGraph$: function(edges, $T) {
 
 },
 
-Dijkstra: {"": "Object;_explored_nodes,_unexplored_edges,_distance,_previous,_graph,_graph$_path",
+Dijkstra: {"": "Object;_explored_nodes,_unexplored_edges,_distance,_previous,_graph,_graph$_path,_mod",
   _explore$1: function(node) {
-    var t1, t2, t3, t4, t5, alt_edge, edge, connected_node, alt_weight, $arguments, t6;
-    for (t1 = this._graph.nodes, t1 = J.get$iterator$ax(t1.$index(t1, node)), t2 = this._distance, t3 = this._explored_nodes, t4 = this._previous, t5 = this._unexplored_edges, alt_edge = null; t1.moveNext$0();) {
+    var t1, t2, t3, t4, t5, t6, alt_edge, edge, connected_node, alt_weight, $arguments, t7;
+    for (t1 = this._graph.nodes, t1 = J.get$iterator$ax(t1.$index(t1, node)), t2 = this._distance, t3 = this._mod, t4 = this._explored_nodes, t5 = this._previous, t6 = this._unexplored_edges, alt_edge = null; t1.moveNext$0();) {
       edge = t1.get$current();
       connected_node = edge.get_connected_node$1(node);
-      alt_weight = J.$add$ns(t2.$index(t2, node), edge.weight);
+      alt_weight = J.$add$ns(J.$add$ns(t2.$index(t2, node), edge.weight), t3);
       if (J.$lt$n(alt_weight, t2.$index(t2, connected_node))) {
         t2.$indexSet(t2, connected_node, alt_weight);
-        t4.$indexSet(t4, connected_node, node);
+        t5.$indexSet(t5, connected_node, node);
         $arguments = H.substitute(this.$asDijkstra, H.getRuntimeTypeInfo(this));
-        t6 = $arguments == null ? null : $arguments[0];
+        t7 = $arguments == null ? null : $arguments[0];
         alt_edge = new D.WeightedEdge(node, connected_node, alt_weight);
-        alt_edge.$builtinTypeInfo = [t6];
-        if (!C.JSArray_methods.contains$1(t3, connected_node)) {
-          t5.nodes.push(alt_edge);
-          t5._heapify_up$1(t5.nodes.length - 1);
+        alt_edge.$builtinTypeInfo = [t7];
+        if (!C.JSArray_methods.contains$1(t4, connected_node)) {
+          t6.nodes.push(alt_edge);
+          t6._heapify_up$1(t6.nodes.length - 1);
         }
       }
     }
-    t3.push(node);
+    t4.push(node);
   },
   search$2: function(_, source, target) {
     var t1, t2, edge, u, v, node;
@@ -6170,7 +6184,7 @@ Dijkstra: {"": "Object;_explored_nodes,_unexplored_edges,_distance,_previous,_gr
     }
     return t2;
   },
-  Dijkstra$1: function(_graph, $T) {
+  Dijkstra$2: function(_graph, _mod, $T) {
     var t1, t2, t3, node;
     for (t1 = this._graph.nodes, t2 = new P.HashMapKeyIterable(t1), H.setRuntimeTypeInfo(t2, [H.getRuntimeTypeArgument(t1, "_HashMap", 0)]), t2 = t2._map, t2 = new P.HashMapKeyIterator(t2, t2._computeKeys$0(), 0, null), t1 = this._distance, t3 = this._previous; t2.moveNext$0();) {
       node = t2._collection$_current;
@@ -6179,12 +6193,12 @@ Dijkstra: {"": "Object;_explored_nodes,_unexplored_edges,_distance,_previous,_gr
     }
   },
   static: {
-Dijkstra$: function(_graph, $T) {
+Dijkstra$: function(_graph, _mod, $T) {
   var t1 = P.List_List(null, $T);
   H.setRuntimeTypeInfo(t1, [$T]);
-  t1 = new D.Dijkstra(t1, G.Heap$(null, [D.WeightedEdge, $T]), P.HashMap_HashMap(null, null, null, $T, J.JSNumber), P.HashMap_HashMap(null, null, null, $T, $T), _graph, P.ListQueue$(null, $T));
+  t1 = new D.Dijkstra(t1, G.Heap$(null, [D.WeightedEdge, $T]), P.HashMap_HashMap(null, null, null, $T, J.JSNumber), P.HashMap_HashMap(null, null, null, $T, $T), _graph, P.ListQueue$(null, $T), _mod);
   H.setRuntimeTypeInfo(t1, [$T]);
-  t1.Dijkstra$1(_graph, $T);
+  t1.Dijkstra$2(_graph, _mod, $T);
   return t1;
 }}
 
