@@ -403,15 +403,6 @@ JSNumber: {"": "num/Interceptor;",
     else
       return Math.round(receiver);
   },
-  toStringAsFixed$1: function(receiver, fractionDigits) {
-    var result;
-    if (fractionDigits < 0 || fractionDigits > 20)
-      throw H.wrapException(P.RangeError$(fractionDigits));
-    result = receiver.toFixed(fractionDigits);
-    if (receiver === 0 && this.get$isNegative(receiver))
-      return "-" + result;
-    return result;
-  },
   toString$0: function(receiver) {
     if (receiver === 0 && 1 / receiver < 0)
       return "-0.0";
@@ -2325,6 +2316,12 @@ UnitField: {"": "Object;_canvas,_context,_rect,width,height,unit_count,_units,_u
       t2._heapify_up$1(t2.nodes.length - 1);
     }
   },
+  draw_timer$1: function(n) {
+    P.Timer_Timer(P.Duration$(0, 0, 0, 10, 0, 0), new Z.UnitField_draw_timer_closure(this, n));
+  },
+  get$draw_timer: function() {
+    return new H.BoundClosure$1(this, Z.UnitField.prototype.draw_timer$1, null, "draw_timer$1");
+  },
   draw$1: function(_) {
     var t1, t2, t3, t4, max;
     this._context = J.get$context2D$x(this._canvas);
@@ -2351,7 +2348,7 @@ UnitField: {"": "Object;_canvas,_context,_rect,width,height,unit_count,_units,_u
     this._arrival_sync$_target.draw$1(this._context);
     this.draw_units$1(this._context);
     t1 = window;
-    t2 = this.get$draw();
+    t2 = this.get$draw_timer();
     C.Window_methods._ensureRequestAnimationFrame$0(t1);
     C.Window_methods._requestAnimationFrame$1(t1, W._wrapZone(t2));
   },
@@ -2394,6 +2391,12 @@ UnitField$: function(_canvas, unit_count) {
 
 },
 
+UnitField_draw_timer_closure: {"": "Closure;this_0,n_1",
+  call$0: function() {
+    this.this_0.draw$1(this.n_1);
+  }
+},
+
 Unit: {"": "Object;size,color?,_board,_tile,_destination,_destination_distance,_path,_arrival_sync$_target",
   seek$0: function() {
     var t1, t, t2, t3;
@@ -2411,7 +2414,7 @@ Unit: {"": "Object;size,color?,_board,_tile,_destination,_destination_distance,_
       t3 = Math.abs(t2 - t3);
       if (typeof t1 !== "number")
         throw t1.$sub();
-      this._destination_distance = t1 - (t3 + 1);
+      this._destination_distance = t1 - (t3 + 10);
       P.print(this._destination_distance);
     }
   },
@@ -2434,7 +2437,7 @@ Unit: {"": "Object;size,color?,_board,_tile,_destination,_destination_distance,_
       t4 = Math.abs(t3 - t4);
       if (typeof t2 !== "number")
         throw t2.$add();
-      this._destination_distance = t2 + (t4 + 1);
+      this._destination_distance = t2 + (t4 + 10);
     }
     return this._path;
   },
@@ -2526,7 +2529,7 @@ Board: {"": "Object;_tiles,_board_graph,_canvas,_context,_rect,_tile_size,_width
         if (1 >= t4)
           throw H.ioore(t3, 1);
         t3[1] = y0;
-        tile._elevation = Math.random() * (tile.max_elevation - 0) + 0;
+        tile._elevation = C.JSDouble_methods.toInt$0(Math.random() * (tile.max_elevation - 0) + 0);
         if (tile._color == null)
           tile.calc_color$0();
         J.add$1$ax(t2.$index(t2, i), tile);
@@ -2580,7 +2583,7 @@ Board: {"": "Object;_tiles,_board_graph,_canvas,_context,_rect,_tile_size,_width
       }
   },
   path$2: function(_, source, target) {
-    var $D = D.Dijkstra$(this._board_graph, 1, Z.Tile);
+    var $D = D.Dijkstra$(this._board_graph, 10, Z.Tile);
     return $D.search$2($D, source, target);
   },
   draw$1: function(context) {
@@ -2667,7 +2670,7 @@ Tile: {"": "Object;_color,_elevation,max_elevation,_size,_arrival_sync$_position
     context.fillStyle = "black";
     context.textAlign = "center";
     context.beginPath();
-    t4 = J.toStringAsFixed$1$n(this._elevation, 1);
+    t4 = J.toString$0(this._elevation);
     t1 = t1.items;
     t5 = t1.length;
     if (0 >= t5)
@@ -5567,10 +5570,6 @@ RangeError: {"": "ArgumentError;message",
     return "RangeError: " + H.S(this.message);
   },
   static: {
-RangeError$: function(message) {
-  return new P.RangeError(message);
-},
-
 RangeError$value: function(value) {
   return new P.RangeError("value " + H.S(value));
 },
@@ -6584,6 +6583,7 @@ C.C__RootZone = new P._RootZone();
 C.CanvasRenderingContext2D_methods = W.CanvasRenderingContext2D.prototype;
 C.Duration_0 = new P.Duration(0);
 C.JSArray_methods = J.JSArray.prototype;
+C.JSDouble_methods = J.JSDouble.prototype;
 C.JSInt_methods = J.JSInt.prototype;
 C.JSNumber_methods = J.JSNumber.prototype;
 C.JSString_methods = J.JSString.prototype;
@@ -6813,9 +6813,6 @@ J.roundToDouble$0$n = function(receiver) {
 };
 J.toString$0 = function(receiver) {
   return J.getInterceptor(receiver).toString$0(receiver);
-};
-J.toStringAsFixed$1$n = function(receiver, a0) {
-  return J.getInterceptor$n(receiver).toStringAsFixed$1(receiver, a0);
 };
 Isolate.$lazy($, "globalThis", "globalThis", "get$globalThis", function() {
   return function() { return this; }();
