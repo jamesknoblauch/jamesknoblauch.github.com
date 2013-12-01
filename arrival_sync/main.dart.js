@@ -2316,12 +2316,6 @@ UnitField: {"": "Object;_canvas,_context,_rect,width,height,unit_count,_units,_u
       t2._heapify_up$1(t2.nodes.length - 1);
     }
   },
-  draw_timer$1: function(n) {
-    P.Timer_Timer(P.Duration$(0, 0, 0, 10, 0, 0), new Z.UnitField_draw_timer_closure(this, n));
-  },
-  get$draw_timer: function() {
-    return new H.BoundClosure$1(this, Z.UnitField.prototype.draw_timer$1, null, "draw_timer$1");
-  },
   draw$1: function(_) {
     var t1, t2, t3, t4, max;
     this._context = J.get$context2D$x(this._canvas);
@@ -2347,10 +2341,7 @@ UnitField: {"": "Object;_canvas,_context,_rect,width,height,unit_count,_units,_u
     }
     this._arrival_sync$_target.draw$1(this._context);
     this.draw_units$1(this._context);
-    t1 = window;
-    t2 = this.get$draw_timer();
-    C.Window_methods._ensureRequestAnimationFrame$0(t1);
-    C.Window_methods._requestAnimationFrame$1(t1, W._wrapZone(t2));
+    P.Timer_Timer(P.Duration$(0, 0, 0, 50, 0, 0), new Z.UnitField_draw_closure(this));
   },
   get$draw: function() {
     return new H.BoundClosure$1(this, Z.UnitField.prototype.draw$1, null, "draw$1");
@@ -2391,9 +2382,13 @@ UnitField$: function(_canvas, unit_count) {
 
 },
 
-UnitField_draw_timer_closure: {"": "Closure;this_0,n_1",
+UnitField_draw_closure: {"": "Closure;this_0",
   call$0: function() {
-    this.this_0.draw$1(this.n_1);
+    var t1, t2;
+    t1 = window;
+    t2 = this.this_0.get$draw();
+    C.Window_methods._ensureRequestAnimationFrame$0(t1);
+    C.Window_methods._requestAnimationFrame$1(t1, W._wrapZone(t2));
   }
 },
 
@@ -2415,7 +2410,6 @@ Unit: {"": "Object;size,color?,_board,_tile,_destination,_destination_distance,_
       if (typeof t1 !== "number")
         throw t1.$sub();
       this._destination_distance = t1 - (t3 + 10);
-      P.print(this._destination_distance);
     }
   },
   _calc_path$0: function() {
