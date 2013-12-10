@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Segmented Least Squares</title>
+    <link rel="stylesheet" href="sls.css">
+  </head>
+  <body>
+    <h1>Segmented Least Squares</h1>
+    
+    <div id="canvas_container">
+      <div>
+        <canvas id="plot_canvas" width="600" height="450"></canvas>
+      </div>
+      <div>
+        <ul id="equation_list" title="equations"></ul>
+      </div>
+    </div>
+    
+    <div id="table_container">
+      <table id="error_table"><thead>Line Error</thead></table>
+      <table id="cost_table"><thead>Line Cost</thead></table>
+      <table id="opt_table"><thead>Optimal Cost</thead></table>
+    </div>
+
+    <script type="application/dart" src="sls.dart.js"></script>
+    <script src="packages/browser/dart.js"></script>
+  </body>
+</html>
