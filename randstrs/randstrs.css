@@ -72,6 +72,7 @@ footer, .navbar {
 
 .min-width-pre {
     min-width: 150px;
+    padding: 6px;
 }
 
 .panel, .form-control, .btn, pre {

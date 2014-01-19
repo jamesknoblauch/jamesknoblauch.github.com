@@ -12,7 +12,8 @@ class OutputPanel {
   
   OutputPanel() {
       table = querySelector('#output_table');
-      body = table.nodes[1] as TableSectionElement;
+      //body = table.nodes[2] as TableSectionElement;
+      body = table.createTBody();
   }
   
   void add_item(RandomSequence item) {
@@ -58,12 +59,12 @@ class OutputPanel {
       else
           row.classes.add('success');
       
-      body.nodes.insert(2, row);
+      body.nodes.insert(0, row);
   }
   
   void reset() {
       //body.nodes.clear();
-      while (body.nodes.length > 2)
+      while (body.nodes.length > 0)
           body.nodes.removeLast();
   }
   

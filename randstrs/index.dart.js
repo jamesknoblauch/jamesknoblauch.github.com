@@ -5855,6 +5855,10 @@ StringBuffer$: function($content) {
 
 Symbol: {"": "Object;"}}],
 ["dart.dom.html", "dart:html", , W, {
+_ElementFactoryProvider_createElement_tag: function(tag, typeExtension) {
+  return document.createElement(tag);
+},
+
 _convertNativeToDart_EventTarget: function(e) {
   var $window, t1;
   if (e == null)
@@ -5876,7 +5880,7 @@ _wrapZone: function(callback) {
   return t1.bindUnaryCallback$2$runGuarded(callback, true);
 },
 
-HtmlElement: {"": "Element;", "%": "HTMLAppletElement|HTMLAreaElement|HTMLBRElement|HTMLBaseElement|HTMLBaseFontElement|HTMLBodyElement|HTMLCanvasElement|HTMLContentElement|HTMLDListElement|HTMLDataListElement|HTMLDetailsElement|HTMLDialogElement|HTMLDirectoryElement|HTMLDivElement|HTMLFontElement|HTMLFrameElement|HTMLFrameSetElement|HTMLHRElement|HTMLHeadElement|HTMLHeadingElement|HTMLHtmlElement|HTMLImageElement|HTMLLabelElement|HTMLLegendElement|HTMLMarqueeElement|HTMLMenuElement|HTMLModElement|HTMLOListElement|HTMLParagraphElement|HTMLQuoteElement|HTMLScriptElement|HTMLShadowElement|HTMLSourceElement|HTMLSpanElement|HTMLTableCaptionElement|HTMLTableCellElement|HTMLTableColElement|HTMLTableDataCellElement|HTMLTableElement|HTMLTableHeaderCellElement|HTMLTableRowElement|HTMLTemplateElement|HTMLTitleElement|HTMLTrackElement|HTMLUListElement|HTMLUnknownElement;HTMLElement"},
+HtmlElement: {"": "Element;", "%": "HTMLAppletElement|HTMLAreaElement|HTMLBRElement|HTMLBaseElement|HTMLBaseFontElement|HTMLBodyElement|HTMLCanvasElement|HTMLContentElement|HTMLDListElement|HTMLDataListElement|HTMLDetailsElement|HTMLDialogElement|HTMLDirectoryElement|HTMLDivElement|HTMLFontElement|HTMLFrameElement|HTMLFrameSetElement|HTMLHRElement|HTMLHeadElement|HTMLHeadingElement|HTMLHtmlElement|HTMLImageElement|HTMLLabelElement|HTMLLegendElement|HTMLMarqueeElement|HTMLMenuElement|HTMLModElement|HTMLOListElement|HTMLParagraphElement|HTMLQuoteElement|HTMLScriptElement|HTMLShadowElement|HTMLSourceElement|HTMLSpanElement|HTMLTableCaptionElement|HTMLTableCellElement|HTMLTableColElement|HTMLTableDataCellElement|HTMLTableHeaderCellElement|HTMLTableRowElement|HTMLTableSectionElement|HTMLTemplateElement|HTMLTitleElement|HTMLTrackElement|HTMLUListElement|HTMLUnknownElement;HTMLElement"},
 
 AnchorElement: {"": "HtmlElement;",
   toString$0: function(receiver) {
@@ -6005,6 +6009,9 @@ MeterElement: {"": "HtmlElement;value%", "%": "HTMLMeterElement"},
 MouseEvent: {"": "UIEvent;", "%": "DragEvent|MSPointerEvent|MouseEvent|MouseScrollEvent|MouseWheelEvent|PointerEvent|WheelEvent"},
 
 Node: {"": "EventTarget;",
+  get$nodes: function(receiver) {
+    return new W._ChildNodeListLazy(receiver);
+  },
   remove$0: function(receiver) {
     var t1 = receiver.parentNode;
     if (t1 != null)
@@ -6095,7 +6102,20 @@ SpeechRecognitionError: {"": "Event;error=", "%": "SpeechRecognitionError"},
 
 StyleElement: {"": "HtmlElement;disabled}", "%": "HTMLStyleElement"},
 
-TableSectionElement: {"": "HtmlElement;", $isTableSectionElement: true, "%": "HTMLTableSectionElement"},
+TableElement: {"": "HtmlElement;",
+  createTBody$0: function(receiver) {
+    return this._createTBody$0(receiver);
+  },
+  _createTBody$0: function(receiver) {
+    var tbody;
+    if (!!receiver.createTBody)
+      return receiver.createTBody();
+    tbody = W._ElementFactoryProvider_createElement_tag("tbody", null);
+    new W._ChildrenElementList(receiver, receiver.children)._element.appendChild(tbody);
+    return tbody;
+  },
+  "%": "HTMLTableElement"
+},
 
 TextAreaElement: {"": "HtmlElement;disabled},name=,value%", "%": "HTMLTextAreaElement"},
 
@@ -7284,13 +7304,13 @@ OutputPanel: {"": "Object;table,body",
         t1.add$1(t1, "success");
       }
     }
-    t1 = new W._ChildNodeListLazy(this.body);
-    t1.insert$2(t1, 2, row);
+    t1 = J.get$nodes$x(this.body);
+    t1.insert$2(t1, 0, row);
   },
   reset$0: function(_) {
-    var t1, result, t2;
-    for (; t1 = this.body, new W._ChildNodeListLazy(t1)._this.childNodes.length > 2;) {
-      t1 = new W._ChildNodeListLazy(t1)._this;
+    var t1, t2, result;
+    for (; t1 = this.body, t2 = J.getInterceptor$x(t1), t2.get$nodes(t1)._this.childNodes.length > 0;) {
+      t1 = t2.get$nodes(t1)._this;
       result = t1.lastChild;
       t2 = result == null;
       if (t2)
@@ -7309,12 +7329,7 @@ OutputPanel: {"": "Object;table,body",
   },
   OutputPanel$0: function() {
     this.table = document.querySelector("#output_table");
-    var t1 = this.table;
-    t1.toString;
-    t1 = new W._ChildNodeListLazy(t1)._this.childNodes;
-    if (1 >= t1.length)
-      throw H.ioore(t1, 1);
-    this.body = H.interceptedTypeCast(t1[1], "$isTableSectionElement");
+    this.body = J.createTBody$0$x(this.table);
   },
   static: {
 OutputPanel$: function() {
@@ -7972,6 +7987,9 @@ J.add$1$ax = function(receiver, a0) {
 J.addEventListener$3$x = function(receiver, a0, a1, a2) {
   return J.getInterceptor$x(receiver).addEventListener$3(receiver, a0, a1, a2);
 };
+J.createTBody$0$x = function(receiver) {
+  return J.getInterceptor$x(receiver).createTBody$0(receiver);
+};
 J.forEach$1$ax = function(receiver, a0) {
   return J.getInterceptor$ax(receiver).forEach$1(receiver, a0);
 };
@@ -8004,6 +8022,9 @@ J.get$length$asx = function(receiver) {
 };
 J.get$name$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$name(receiver);
+};
+J.get$nodes$x = function(receiver) {
+  return J.getInterceptor$x(receiver).get$nodes(receiver);
 };
 J.get$value$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$value(receiver);

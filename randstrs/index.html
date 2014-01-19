@@ -63,11 +63,12 @@
       <div class="row">
       
         <!-- option panel -->
-        <div class="col-xs-12 col-sm-4 col-md-3">
-        <div class="panel panel-default low-radius" id="option_panel">
-          <div class="panel-heading"><label>Options</label></div>
-              
-          <form class="panel-body" role="form">
+        <div class="col-xs-12 col-sm-4 col-md-3" id="option_panel">
+        <strong><i class="glyphicon glyphicon-cog"></i> Options</strong>
+        <hr>
+<!--         <div class="panel panel-default low-radius" id="option_panel"> -->
+<!--           <div class="panel-heading"><label>Options</label></div> -->
+          <form role="form">
             <div class="row">
               <!-- length option -->
               <div class="col-xs-6 col-sm-6 col-md-6 form-group">
@@ -141,16 +142,17 @@
             </div>
             <!-- end buttons -->
           </form>
+          <hr>
         </div>
-        </div>
+<!--         </div> -->
         <!-- end option panel -->
         
         <div class="clearfix visible-xs"></div>
         
         <!-- output panel -->
         <div class="col-xs-12 col-sm-8 col-md-9">
-        <div class="panel panel-default low-radius">
-          <div class="panel-heading"><label>Results</label></div>
+          <strong><i class="glyphicon glyphicon-flash"></i> Results</strong>
+          <hr>
           <div class="table-responsive" id="output_panel">
             <table class="table" id="output_table">
               <thead>
@@ -162,10 +164,9 @@
                   <th>Unique</th>
                 </tr>
               </thead>
-              <tbody></tbody>
             </table>
           </div>
-        </div>
+          <hr>
         </div>
         <!-- end output panel -->
         
