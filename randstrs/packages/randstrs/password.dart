@@ -2,9 +2,9 @@ library password;
 
 import 'dart:math';
 
-import 'package:randstrs/src/pool.dart';
-import 'package:randstrs/src/random_sequence.dart';
-import 'package:randstrs/src/random.dart';
+import 'pool.dart';
+import 'random_sequence.dart';
+import 'random.dart';
 
 
 abstract class Password {

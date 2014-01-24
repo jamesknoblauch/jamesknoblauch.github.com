@@ -3,7 +3,7 @@ library random_sequence;
 import 'dart:math';
 import 'dart:collection';
 
-import 'package:randstrs/src/pool.dart';
+import 'pool.dart';
 
 
 class RandomSequence<T> {
@@ -45,7 +45,7 @@ class RandomSequence<T> {
         HashMap<String, bool> types_used = {
             'U': false,
             'L': false,
-            'D':false,
+            'D': false,
             'S': false,
             'W': false
         };

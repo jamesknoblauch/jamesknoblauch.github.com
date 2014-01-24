@@ -1,7 +1,8 @@
 library pool;
 
 import 'dart:math';
-import 'package:randstrs/src/list.dart';
+
+import 'list.dart';
 
 
 abstract class Pool<T> {
@@ -85,13 +86,21 @@ class CharPool implements Pool<String> {
 
 
 class WordPool extends WordList implements Pool<String> {
-  Random random;
-  
-  WordPool(this.random) : super();
-  
-  WordPool.from(this.random, List<String> words) : super.from(words);
-  
-  WordPool.from_text(this.random, String text) : super.from_text(text);
+    Random random;
     
-  String get() => this[random.nextInt(length)];
+    WordPool(this.random) : super();
+    
+    WordPool.from(this.random, List<String> words) : super.from(words);
+    
+    WordPool.from_text(this.random, String text) : super.from_text(text);
+      
+    String get() => this[random.nextInt(length)];
+    
+    bool add(String c) {
+        if (!items.contains(c)) {
+            items.add(c);
+            return true;
+        } else
+            return false;
+    }
 }

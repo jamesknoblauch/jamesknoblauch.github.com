@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="keywords" content="random,text,password,passphrase,generator,wordlist">
+    <meta name="author" content="James Knoblauch">
+    
+    <title>randstrs</title>
+    
+    <!-- bootstrap styles -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    
+    <!-- local styles -->
+    <link rel="stylesheet" href="randstrs.css">
+  </head>
+  
+  
+  <body>
+  
+    <!-- nav-bar -->
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+      
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav_options">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="#" class="navbar-brand">randstrs</a>
+        </div>
+        
+        <div class="collapse navbar-collapse" id="nav_options">
+        
+          <!-- left nav links -->
+          <ul class="nav navbar-nav" id="nav_list_left">
+            <li id="random_li">
+              <a href="random.html">random</a>
+            </li>
+            <li id="phrase_li">
+              <a href="phrase.html">phrase</a>
+            </li>
+            <li id="ngram_li" class="active">
+              <a href="ngram.html">n-gram</a>
+            </li>
+            <li id="list_li">
+              <a href="list.html">wordlist</a>
+            </li>
+          </ul>
+          <!-- end left nav links -->
+          
+          <!-- right nav links -->
+          <ul class="nav navbar-nav navbar-right" id="nav_list_right">
+            <li id="help_li">
+              <a href="help.html">help</a>
+            </li>
+            <li id="about_li">
+              <a href="about.html">about</a>
+            </li>
+          </ul>
+          <!-- end right nav links -->
+          
+        </div>
+      </div>
+    </div>
+    <!-- end nav-bar -->
+    
+    
+    <!-- main container -->
+    <div class="container" id="main_container">
+      <div class="row">
+      
+        <!-- option panel -->
+        <div class="col-xs-12 col-sm-4 col-md-3" id="option_panel">
+          <strong><i class="glyphicon glyphicon-cog"></i> Options</strong>
+          <hr>
+          <!-- options -->
+            <div id="option_container">
+              <form role="form">
+                <div class="row">
+                  <!-- length option -->
+                  <div class="col-xs-6 col-sm-6 col-md-6 form-group">
+                    <label for="length_input">Length</label>
+                    <input type="text" class="form-control" id="length_input" value='12'>
+                  </div>
+                  <!-- end length option -->
+                  
+                  <!-- repeat option -->
+                  <div class="col-xs-6 col-sm-6 col-md-6 form-group">
+                    <label for="repeat_input">Repeat</label>
+                    <input type="text" class="form-control" id="repeat_input" value='0'>
+                  </div>
+                  <!-- end repeat option -->
+                </div>
+                
+                
+                
+                
+                <!-- buttons -->
+                <div class="row">
+                  <div class="btn-group col-xs-6 col-sm-6 col-md-6">
+                    <button type="button" class="btn btn-custom" id="gen_button">Generate</button>
+                  </div>
+                  <div class="btn-group col-xs-6 col-sm-6 col-md-6">
+                    <button type="button" class="btn btn-custom" id="clear_button">Clear</button>
+                  </div>
+                </div>
+                <!-- end buttons -->
+              </form>
+            </div>
+          <!-- options -->
+          <hr>
+        </div>
+        <!-- end option panel -->
+        
+        
+        <div class="clearfix visible-xs"></div>
+        
+        
+        <!-- output panel -->
+        <div class="col-xs-12 col-sm-8 col-md-9">
+          <strong><i class="glyphicon glyphicon-flash"></i> Results</strong>
+          <hr>
+          <!-- output table -->
+          <div class="table-responsive" id="output">
+            <table class="table" id="output_table">
+              <thead>
+                <tr>
+                  <th>Word</th>
+                  <th>Blind Entropy</th>
+                  <th>Pool Entropy</th>
+                  <th>Char Types</th>
+                  <th>Unique</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <!-- end output table -->
+          <hr>
+        </div>
+        <!-- end output panel -->
+        
+        
+      </div>
+    </div>
+    <!-- end main container -->
+    
+    
+    <!-- footer -->
+    <footer class="bs-footer" role="contentinfo">
+      <div>Copyright &copy; 2014 James Knoblauch</div>
+    </footer>
+    <!-- end footer -->
+    
+    
+    <!-- dart import -->
+    <script src="packages/browser/interop.js"></script>
+    <script type="application/dart" src="ngram_app.dart"></script>
+    <script src="packages/browser/dart.js"></script>
+    
+    <!-- jquery import -->
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    
+    <!-- bootstrap import -->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    
+  </body>
+</html>
