@@ -78,8 +78,8 @@ class RandomOptionPanel {
     CheckboxInputElement pattern_checkbox = querySelector('#pattern_checkbox');
     TextInputElement pattern_input = querySelector('#pattern_input');
     
-    ButtonElement gen_button = querySelector('#gen_button');
-    ButtonElement clear_button = querySelector('#clear_button');
+    AnchorElement gen_button = querySelector('#gen_button');
+    AnchorElement clear_button = querySelector('#clear_button');
     
     
     RandomOptionPanel() {

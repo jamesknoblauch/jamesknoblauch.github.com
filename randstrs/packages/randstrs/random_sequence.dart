@@ -51,11 +51,13 @@ class RandomSequence<T> {
         };
         
         for (String i in items) {
-            types_used['U'] = CharPool.ASCII_UPPER.contains(i) || types_used['U'];
-            types_used['L'] = CharPool.ASCII_LOWER.contains(i) || types_used['L'];
-            types_used['D'] = CharPool.ASCII_DIGITS.contains(i) || types_used['D'];
-            types_used['S'] = CharPool.ASCII_SPECIAL.contains(i) || types_used['S'];
-            types_used['W'] = CharPool.ASCII_WHITESPACE.contains(i) || types_used['W'];
+            for (String j in i.split('')) {
+                types_used['U'] = CharPool.ASCII_UPPER.contains(j) || types_used['U'];
+                types_used['L'] = CharPool.ASCII_LOWER.contains(j) || types_used['L'];
+                types_used['D'] = CharPool.ASCII_DIGITS.contains(j) || types_used['D'];
+                types_used['S'] = CharPool.ASCII_SPECIAL.contains(j) || types_used['S'];
+                types_used['W'] = CharPool.ASCII_WHITESPACE.contains(j) || types_used['W'];
+            }
         }
         
         return types_used;
@@ -64,9 +66,8 @@ class RandomSequence<T> {
     double score() {
         double score = 0.0;
         for (bool v in char_types().values) {
-            if (v)
-                score += 2;
+            if (v) score += 3;
         }
-        return score + (blind_entropy + pool_entropy) / 2;
+        return score + (2*blind_entropy + pool_entropy) / 3;
     }
 }

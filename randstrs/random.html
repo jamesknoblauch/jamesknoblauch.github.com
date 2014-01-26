@@ -78,82 +78,87 @@
           <strong><i class="glyphicon glyphicon-cog"></i> Options</strong>
           <hr>
           <!-- options -->
-            <div id="option_container">
-              <form role="form">
-                <div class="row">
-                  <!-- length option -->
-                  <div class="col-xs-6 col-sm-6 col-md-6 form-group">
-                    <label for="length_input">Length</label>
-                    <input type="text" class="form-control" id="length_input" value='12'>
-                  </div>
-                  <!-- end length option -->
-                  
-                  <!-- repeat option -->
-                  <div class="col-xs-6 col-sm-6 col-md-6 form-group">
-                    <label for="repeat_input">Repeat</label>
-                    <input type="text" class="form-control" id="repeat_input" value='0'>
-                  </div>
-                  <!-- end repeat option -->
-                </div>
-                
-                <!-- character options -->
-                <div class="row">
-                  <div class="col-md-12">
-                    <label>Character Options</label>
-                  </div>
-                </div>
-                
-                <div class="row">
-                  <div class="col-xs-6 col-sm-6 col-md-6">
-                    <label class="checkbox"><input type="checkbox" id="all_chars" checked> All ASCII</label>
-                  </div>
-                  
-                  <div class="col-xs-6 col-sm-6 col-md-6">
-                    <label class="checkbox"><input type="checkbox" id="digit_chars" checked disabled> Digits</label>
-                  </div>
-                  
-                  <div class="col-xs-6 col-sm-6 col-md-6">
-                    <label class="checkbox"><input type="checkbox" id="upper_chars" checked disabled> Upper</label>
-                  </div>
-                  
-                  <div class="col-xs-6 col-sm-6 col-md-6">
-                    <label class="checkbox"><input type="checkbox" id="lower_chars" checked disabled> Lower</label>
-                  </div>
-                  
-                  <div class="col-xs-6 col-sm-6 col-md-6">
-                    <label class="checkbox"><input type="checkbox" id="special_chars" checked disabled> Special</label>
-                  </div>
-                </div>
-                
-                <div class="row">
-                  <div class="col-xs-12 col-sm-12 col-md-12">
-                    <label class="checkbox"><input type="checkbox" id="custom_checkbox"> Custom</label>
-                    <input type="text" class="form-control" id="custom_input" disabled>
-                  </div>
-                </div>
-                <!-- end character options -->
-                
-                <!-- pattern options -->
-                <div class="row">
-                  <div class="col-xs-12 col-sm-12 col-md-12">
-                    <label class="checkbox"><input type="checkbox" id="pattern_checkbox"> Pattern</label>
-                    <input type="text" class="form-control" id="pattern_input" disabled>
-                  </div>
-                </div>
-                <!-- end pattern options -->
-                
-                <!-- buttons -->
-                <div class="row">
-                  <div class="btn-group col-xs-6 col-sm-6 col-md-6">
-                    <button type="button" class="btn btn-custom" id="gen_button">Generate</button>
-                  </div>
-                  <div class="btn-group col-xs-6 col-sm-6 col-md-6">
-                    <button type="button" class="btn btn-custom" id="clear_button">Clear</button>
-                  </div>
-                </div>
-                <!-- end buttons -->
-              </form>
+          <form id="option_form" role="form">
+          
+            <div class="row">
+              <!-- length option -->
+              <div class="col-xs-6 col-sm-6 col-md-6 form-group">
+                <label for="length_input">Length</label>
+                <input type="text" class="form-control" id="length_input" value='12'>
+              </div>
+              <!-- end length option -->
+              
+              <!-- repeat option -->
+              <div class="col-xs-6 col-sm-6 col-md-6 form-group">
+                <label for="repeat_input">Repeat</label>
+                <input type="text" class="form-control" id="repeat_input" value='0'>
+              </div>
+              <!-- end repeat option -->
             </div>
+            
+            <!-- character options -->
+            <div class="row">
+            <div class="col-md-12 form-group">
+            
+            <div class="row">
+              <div class="col-md-12">
+                <label>Character Options</label>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <label class="checkbox"><input type="checkbox" id="all_chars" checked> All ASCII</label>
+              </div>
+              
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <label class="checkbox"><input type="checkbox" id="digit_chars" checked disabled> Digits</label>
+              </div>
+              
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <label class="checkbox"><input type="checkbox" id="upper_chars" checked disabled> Upper</label>
+              </div>
+              
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <label class="checkbox"><input type="checkbox" id="lower_chars" checked disabled> Lower</label>
+              </div>
+              
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <label class="checkbox"><input type="checkbox" id="special_chars" checked disabled> Special</label>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <label class="checkbox"><input type="checkbox" id="custom_checkbox"> Custom</label>
+                <input type="text" class="form-control" id="custom_input" disabled>
+              </div>
+            </div>
+            
+            </div>
+            </div>
+            <!-- end character options -->
+            
+            <!-- pattern options -->
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 form-group">
+                <label class="checkbox"><input type="checkbox" id="pattern_checkbox"> Pattern</label>
+                <input type="text" class="form-control" id="pattern_input" disabled>
+              </div>
+            </div>
+            <!-- end pattern options -->
+            
+            <!-- buttons -->
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 form-group" style="margin-top:10px;">
+                <div class="btn-group btn-group-justified">
+                <a id="gen_button" class="btn btn-custom" role="button">Generate</a>
+                <a id="clear_button" class="btn btn-custom" role="button">Clear</a>
+                </div>
+              </div>
+            </div>
+            <!-- end buttons -->
+          </form>
           <!-- options -->
           <hr>
         </div>

@@ -64,27 +64,28 @@ class OutputPanel {
         
         PreElement pre = new PreElement();
         pre..text = item.toString()
-                ..onClick.listen(handle_pre_click)
-                    ..classes.add('min-width-pre');
+           ..onClick.listen(handle_pre_click)
+           ..classes.add('min-width-pre');
         
         row..addCell().append(pre)
-            ..addCell().text = item.blind_entropy.toStringAsFixed(2)
-            ..addCell().text = item.pool_entropy.toStringAsFixed(2);
+           ..addCell().text = item.blind_entropy.toStringAsFixed(2)
+           ..addCell().text = item.pool_entropy.toStringAsFixed(2);
         
         char_types = item.char_types();
         for (String key in char_types.keys) {
             if (char_types[key])
                 types_used.add(key);
         }
+        
         row..addCell().text = types_used.join(',')
-                ..addCell().text = '${item.unique().length} / ${item.length}';
+           ..addCell().text = '${item.unique().length} / ${item.length}';
                 
-                if (item.score() < 80)
-                    row.classes.add('danger');
-                else if (item.score() < 110)
-                    row.classes.add('warning');
-                else
-                    row.classes.add('success');
+        if (item.score() < 80)
+            row.classes.add('danger');
+        else if (item.score() < 110)
+            row.classes.add('warning');
+        else
+            row.classes.add('success');
     }
     
     void reset() {

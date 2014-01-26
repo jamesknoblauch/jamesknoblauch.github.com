@@ -78,39 +78,65 @@
           <strong><i class="glyphicon glyphicon-cog"></i> Options</strong>
           <hr>
           <!-- options -->
-            <div id="option_container">
-              <form role="form">
-                <div class="row">
-                  <!-- length option -->
-                  <div class="col-xs-6 col-sm-6 col-md-6 form-group">
-                    <label for="length_input">Length</label>
-                    <input type="text" class="form-control" id="length_input" value='12'>
-                  </div>
-                  <!-- end length option -->
-                  
-                  <!-- repeat option -->
-                  <div class="col-xs-6 col-sm-6 col-md-6 form-group">
-                    <label for="repeat_input">Repeat</label>
-                    <input type="text" class="form-control" id="repeat_input" value='0'>
-                  </div>
-                  <!-- end repeat option -->
-                </div>
-                
-                <!-- file input -->
-                <!-- end file input -->
-                
-                <!-- buttons -->
-                <div class="row">
-                  <div class="btn-group col-xs-6 col-sm-6 col-md-6">
-                    <button type="button" class="btn btn-custom" id="gen_button">Generate</button>
-                  </div>
-                  <div class="btn-group col-xs-6 col-sm-6 col-md-6">
-                    <button type="button" class="btn btn-custom" id="clear_button">Clear</button>
-                  </div>
-                </div>
-                <!-- end buttons -->
-              </form>
+          <form id="option_form" role="form">
+          
+            <div class="row">
+              <!-- length option -->
+              <div class="col-xs-6 col-sm-6 col-md-6 form-group">
+                <label for="length_input">Length</label>
+                <input type="text" class="form-control" id="length_input" value='5'>
+              </div>
+              <!-- end length option -->
+              
+              <!-- repeat option -->
+              <div class="col-xs-6 col-sm-6 col-md-6 form-group">
+                <label for="repeat_input">Repeat</label>
+                <input type="text" class="form-control" id="repeat_input" value='0'>
+              </div>
+              <!-- end repeat option -->
             </div>
+            
+            <!-- wordlist options -->
+            <div class="row">
+            <div class="col-md-12 form-group">
+            
+            <div class="row">
+              <div class="col-md-12">
+                <label>From Text File</label>
+              </div>
+            </div>
+            
+            <!-- file input -->
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                    <span class="btn btn-custom btn-file">
+                      Browse <input id="wordlist_file_input" type="file" multiple>
+                    </span>
+                  </span>
+                  <input id="wordlist_text_input" type="text" class="form-control" readonly="">
+                </div>
+              </div>
+            </div>
+            <!-- end file input -->
+            
+            </div>
+            </div>
+            <!-- end wordlist options -->
+            
+            <!-- buttons -->
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 form-group" style="margin-top:10px;">
+                <div class="btn-group btn-group-justified">
+                <a id="gen_button" class="btn btn-custom" role="button">Generate</a>
+                <a id="clear_button" class="btn btn-custom" role="button">Clear</a>
+                </div>
+              </div>
+            </div>
+            <!-- end buttons -->
+            
+          </form>
           <!-- options -->
           <hr>
         </div>
@@ -142,7 +168,6 @@
           <hr>
         </div>
         <!-- end output panel -->
-        
         
       </div>
     </div>

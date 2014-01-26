@@ -3,7 +3,7 @@ library list;
 import 'dart:collection';
 
 
-class WordList extends ListBase<String> {
+class WordList extends ListMixin<String> {
     List<String> items;
     
     WordList([int size]) {
@@ -72,11 +72,13 @@ class WordList extends ListBase<String> {
         addAll(unique);
     }
     
-    void add_from_text(String text) {
-        String split_pattern = "[\\W_]{2,}|[\\s+]|[^\\w-]+";
+    bool add_from_text(String text) {
+        Pattern split_pattern = r'[\W_]{2,}|[\s+]|[^\w-]+';
+        RegExp re = new RegExp(split_pattern);
         
-        for (String word in text.split(split_pattern))
+        for (String word in text.split(re))
             add(word);
+        return true;
     }
     
     int get length => items.length;

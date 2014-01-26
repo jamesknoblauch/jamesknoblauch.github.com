@@ -34,13 +34,13 @@ class PatternPassword extends RandomSequence<String> implements Password {
     }
     
     void _parse_pattern() {
-        RegExp re = new RegExp('\\d+[auldsw]{1}');
+        RegExp re = new RegExp(r'\d+[auldsw]{1}');
         CharPool cp;
         String char_set_code;
         int end;
         int count;
       
-        for (String segment in pattern.split(":")) {
+        for (String segment in pattern.split(':')) {
             segment = segment.toLowerCase();
             if (re.hasMatch(segment)) {
                 cp = new CharPool(new ClientSecureRandom());
@@ -91,12 +91,14 @@ class PassPhrase extends RandomSequence<String> implements Password {
   
     PassPhrase(WordPool pool, int length) : super(pool, length);
 
-    int get length {
+    int get char_length {
         int l = 0;
         for (String s in items)
             l += s.length;
         return l;
     }
+    
+    double get blind_entropy => char_length * (log(94) / log(2));
     
     String toString() => items.join();
 }
