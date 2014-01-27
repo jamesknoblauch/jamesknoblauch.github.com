@@ -36,13 +36,17 @@ class PhraseApp implements App {
         wordlist_files = options.wordlist_file_input.files;
         
         for (File f in wordlist_files) {
+            options.browse_button.classes.add('active');
             FileReader reader = new FileReader();
             reader.readAsText(f);
             reader.onLoadEnd.listen((Event e) {
-                Future fu = new Future(() => word_pool.add_from_text(reader.result) && true);
-                fu.then((bool v) {
-                    if (v == true)
-                        options.wordlist_text_input.value = '${word_pool.length} words';
+                Future fwp = new Future(() {
+                    word_pool.add_from_text((e.currentTarget as FileReader).result);
+                });
+                
+                fwp.then((_) {
+                    options.browse_button.classes.remove('active');
+                    options.wordlist_text_input.value = '${word_pool.length} words';
                 });
             });
         }
@@ -66,6 +70,7 @@ class PhraseOptionPanel {
     TextInputElement length_input = querySelector('#length_input');
     TextInputElement repeat_input = querySelector('#repeat_input');
     
+    SpanElement browse_button = querySelector('#browse_button');
     InputElement wordlist_file_input = querySelector('#wordlist_file_input');
     TextInputElement wordlist_text_input = querySelector('#wordlist_text_input');
     
@@ -84,5 +89,6 @@ class PhraseOptionPanel {
     void reset() {
         length_input.value = default_length.toString();
         repeat_input.value = default_repeat.toString();
+        wordlist_text_input.value = '';
     }
 }

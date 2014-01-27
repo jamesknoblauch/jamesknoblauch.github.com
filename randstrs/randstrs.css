@@ -65,6 +65,54 @@ footer, .navbar {
 }
 
 
+/* spinner icon */
+
+.spinner {
+  display: inline-block;
+  opacity: 0;
+  width: 0;
+
+/*   -webkit-transition: opacity 0.1s, width 0.1s; */
+/*   -moz-transition: opacity 0.1s, width 0.1s; */
+/*   -o-transition: opacity 0.1s, width 0.1s; */
+/*   transition: opacity 0.1s, width 0.1s; */
+}
+
+.has-spinner.active {
+  cursor:progress;
+}
+
+.has-spinner.active .spinner {
+  opacity: 1;
+  width: auto; /*This doesn't work, just fix for unkown width elements */
+  /*width: 16px;*/
+}
+
+.has-spinner.btn-mini.active .spinner {
+    width: 10px;
+}
+
+.has-spinner.btn-small.active .spinner {
+    width: 13px;
+}
+
+.has-spinner.btn.active .spinner {
+    width: 16px;
+}
+
+.has-spinner.btn-large.active .spinner {
+    width: 19px;
+}
+
+.has-spinner.btn-custom.active .spinner {
+    width: 16px;
+    color: #fff !important;
+}
+
+
+
+
+
 /* output panel */
 .min-width-pre {
     min-width: 150px;

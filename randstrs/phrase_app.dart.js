@@ -2888,8 +2888,24 @@ u=w[v]
 if(u==null)w[v]=[this.xf(b)]
 else{if(this.aH(u,b)>=0)return!1
 u.push(this.xf(b))}return!0}},
+Rz:function(a,b){var z,y,x
+if(b!=="__proto__")return this.Nv(this.vv,b)
+else{z=this.OB
+if(z==null)return!1
+y=z[this.nm(b)]
+x=this.aH(y,b)
+if(x<0)return!1
+this.Vb(y.splice(x,1)[0])
+return!0}},
 cA:function(a,b){if(a[b]!=null)return!1
 a[b]=this.xf(b)
+return!0},
+Nv:function(a,b){var z
+if(a==null)return!1
+z=a[b]
+if(z==null)return!1
+this.Vb(z)
+delete a[b]
 return!0},
 xf:function(a){var z,y
 z=new P.tj(a,null,null)
@@ -2900,6 +2916,15 @@ y.sAn(z)
 this.lX=z}this.MU=this.MU+1
 this.zN=this.zN+1&67108863
 return z},
+Vb:function(a){var z,y
+z=a.gzQ()
+y=a.gAn()
+if(z==null)this.H9=y
+else z.sAn(y)
+if(y==null)this.lX=z
+else y.szQ(z)
+this.MU=this.MU-1
+this.zN=this.zN+1&67108863},
 nm:function(a){return J.Dk(a)&0x3ffffff},
 aH:function(a,b){var z,y,x
 if(a==null)return-1
@@ -3313,6 +3338,7 @@ $isXj:true,
 "%":"FileList"},
 H0:{
 "":"D0;kc:error=",
+$isH0:true,
 "%":"FileReader"},
 Yu:{
 "":"qE;B:length=",
@@ -3732,6 +3758,11 @@ gB:function(a){return this.DG().MU},
 Zt:function(a){var z=this.DG()
 return z.tg(z,a)?a:null},
 h:function(a,b){return this.OS(this,new P.GE(b))},
+Rz:function(a,b){var z,y
+z=this.DG()
+y=z.Rz(z,b)
+this.p5(z)
+return y},
 OS:function(a,b){var z,y
 z=this.DG()
 y=b.call$1(z)
@@ -3778,7 +3809,7 @@ bu:function(a){return C.Nm.eC(this.hL)}}}],["","file:///home/james/prog/dart/ran
 Iq:[function(){var z,y,x
 z=document.querySelector("#length_input")
 y=document.querySelector("#repeat_input")
-x=new V.jN(null,null,z,y,document.querySelector("#wordlist_file_input"),document.querySelector("#wordlist_text_input"),document.querySelector("#gen_button"),document.querySelector("#clear_button"))
+x=new V.jN(null,null,z,y,document.querySelector("#browse_button"),document.querySelector("#wordlist_file_input"),document.querySelector("#wordlist_text_input"),document.querySelector("#gen_button"),document.querySelector("#clear_button"))
 x.lW=H.Hp(J.Vm(z),null,null)
 x.Tt=H.Hp(J.Vm(y),null,null)
 new V.Mw(null,null,x,G.VH()).Yr()},"call$0","eE",0,0,9],
@@ -3791,14 +3822,16 @@ this.Wk=z
 z=J.co(this.bG.qs)
 this.M1=z
 for(z=C.X1.gA(z),y=C.tF.Ph;z.G();){x=z.QZ
-w=new FileReader()
-w.readAsText(x)
-v=new W.RO(w,y,!1)
-v.$builtinTypeInfo=[null]
-u=new W.xC(0,w,y,W.VF(new V.A8(this,w)),!1)
-u.$builtinTypeInfo=[H.Kp(v,0)]
-v=u.u7
-if(v!=null&&u.VP<=0)J.qV(u.uv,y,v,!1)}},"call$1","gvJ",2,0,18],
+w=J.pP(this.bG.HG)
+w.h(w,"active")
+v=new FileReader()
+v.readAsText(x)
+w=new W.RO(v,y,!1)
+w.$builtinTypeInfo=[null]
+u=new W.xC(0,v,y,W.VF(new V.A8(this)),!1)
+u.$builtinTypeInfo=[H.Kp(w,0)]
+w=u.u7
+if(w!=null&&u.VP<=0)J.qV(u.uv,y,w,!1)}},"call$1","gvJ",2,0,18],
 D4:[function(a){var z,y,x,w
 z=0
 while(!0){y=H.Hp(J.Vm(this.bG.Zj),null,null)
@@ -3814,43 +3847,47 @@ y.tG(x);++z}},"call$1","gOh",2,0,13],
 hh:[function(a){var z=this.bG
 J.Fc(z.WI,J.AG(z.lW))
 J.Fc(z.Zj,J.AG(z.Tt))
+J.Fc(z.GR,"")
 z=this.zx
 z.CH(z)},"call$1","gcI",2,0,13],
 Yr:function(){var z,y,x,w
 this.zx=G.VH()
 z=document.querySelector("#length_input")
 y=document.querySelector("#repeat_input")
-x=document.querySelector("#wordlist_file_input")
-w=new V.jN(null,null,z,y,x,document.querySelector("#wordlist_text_input"),document.querySelector("#gen_button"),document.querySelector("#clear_button"))
-w.lW=H.Hp(J.Vm(z),null,null)
-w.Tt=H.Hp(J.Vm(y),null,null)
-this.bG=w
-x.toString
-x=H.VM(new W.Cq(x,C.mt.Ph,!1),[null])
-H.VM(new W.xC(0,x.uv,x.Ph,W.VF(this.gvJ()),x.Sg),[H.Kp(x,0)]).Zz()
-x=this.bG.Tc
-x.toString
-w=C.T1.Ph
-x=H.VM(new W.Cq(x,w,!1),[null])
-H.VM(new W.xC(0,x.uv,x.Ph,W.VF(this.gOh()),x.Sg),[H.Kp(x,0)]).Zz()
-x=this.bG.pq
-x.toString
-w=H.VM(new W.Cq(x,w,!1),[null])
-H.VM(new W.xC(0,w.uv,w.Ph,W.VF(this.gcI()),w.Sg),[H.Kp(w,0)]).Zz()}},
+x=document.querySelector("#browse_button")
+w=document.querySelector("#wordlist_file_input")
+x=new V.jN(null,null,z,y,x,w,document.querySelector("#wordlist_text_input"),document.querySelector("#gen_button"),document.querySelector("#clear_button"))
+x.lW=H.Hp(J.Vm(z),null,null)
+x.Tt=H.Hp(J.Vm(y),null,null)
+this.bG=x
+w.toString
+w=H.VM(new W.Cq(w,C.mt.Ph,!1),[null])
+H.VM(new W.xC(0,w.uv,w.Ph,W.VF(this.gvJ()),w.Sg),[H.Kp(w,0)]).Zz()
+w=this.bG.Tc
+w.toString
+x=C.T1.Ph
+w=H.VM(new W.Cq(w,x,!1),[null])
+H.VM(new W.xC(0,w.uv,w.Ph,W.VF(this.gOh()),w.Sg),[H.Kp(w,0)]).Zz()
+w=this.bG.pq
+w.toString
+x=H.VM(new W.Cq(w,x,!1),[null])
+H.VM(new W.xC(0,x.uv,x.Ph,W.VF(this.gcI()),x.Sg),[H.Kp(x,0)]).Zz()}},
 A8:{
-"":"Tp:19;a,b",
+"":"Tp:19;a",
 call$1:function(a){var z=this.a
-P.e4(new V.qW(z,this.b),null).ml(new V.rQ(z))}},
+P.e4(new V.qW(z,a),null).ml(new V.rQ(z))}},
 qW:{
-"":"Tp:9;c,d",
-call$0:function(){return this.c.Wk.Ws(this.d.result)&&!0}},
+"":"Tp:9;b,c",
+call$0:function(){this.b.Wk.Ws(H.Go(J.BC(this.c),"$isH0").result)}},
 rQ:{
-"":"Tp:20;e",
-call$1:function(a){var z
-if(J.de(a,!0)){z=this.e
-J.Fc(z.bG.GR,""+z.Wk.hL.length+" words")}}},
+"":"Tp:11;d",
+call$1:function(a){var z,y
+z=this.d
+y=J.pP(z.bG.HG)
+y.Rz(y,"active")
+J.Fc(z.bG.GR,""+z.Wk.hL.length+" words")}},
 jN:{
-"":"a;lW,Tt,WI,Zj,qs,GR,Tc,pq",
+"":"a;lW,Tt,WI,Zj,HG,qs,GR,Tc,pq",
 gB:function(a){return H.Hp(J.Vm(this.WI),null,null)}}},1],["pool","package:randstrs/pool.dart",,E,{
 "":"",
 Zw:{
@@ -3941,9 +3978,9 @@ P.wv.$iswv=true
 P.wv.$isa=true
 P.mE.$ismE=true
 P.mE.$isa=true
+P.a.$isa=true
 J.kn.$isbool=true
 J.kn.$isa=true
-P.a.$isa=true
 P.b8.$isb8=true
 P.b8.$isa=true
 W.cv.$iscv=true
@@ -4253,7 +4290,7 @@ I.$lazy($,"_toStringVisiting","xg","xb",function(){return P.yv(null)})
 I.$lazy($,"_toStringList","yu","tw",function(){return[]})
 
 init.functionAliases={}
-init.metadata=[{func:"WD",args:[J.O]},{func:"X0",void:true},{func:"G5",void:true,args:[null]},{func:"Vx",void:true,args:[null],opt:[P.mE]},,{func:"Gl",ret:J.kn,args:[null,null]},{func:"bX",ret:J.im,args:[null]},{func:"E0",ret:J.kn,args:[P.a,P.a]},{func:"ZY",ret:J.im,args:[P.a]},{func:"NT"},{func:"bh",args:[null,null]},{func:"aB",args:[null]},{func:"TS",args:[null,J.O]},{func:"bB",void:true,args:[W.Aj]},{func:"BG",args:[null],opt:[null]},{func:"bb",args:[null,P.mE]},{func:"lv",args:[P.wv,null]},{func:"Pt",ret:J.O,args:[J.im]},{func:"WW",void:true,args:[W.ea]},{func:"dG",args:[W.ea]},{func:"zk",args:[J.kn]},];$=null
+init.metadata=[{func:"WD",args:[J.O]},{func:"X0",void:true},{func:"G5",void:true,args:[null]},{func:"Vx",void:true,args:[null],opt:[P.mE]},,{func:"Gl",ret:J.kn,args:[null,null]},{func:"bX",ret:J.im,args:[null]},{func:"E0",ret:J.kn,args:[P.a,P.a]},{func:"ZY",ret:J.im,args:[P.a]},{func:"NT"},{func:"bh",args:[null,null]},{func:"aB",args:[null]},{func:"TS",args:[null,J.O]},{func:"bB",void:true,args:[W.Aj]},{func:"BG",args:[null],opt:[null]},{func:"bb",args:[null,P.mE]},{func:"lv",args:[P.wv,null]},{func:"Pt",ret:J.O,args:[J.im]},{func:"WW",void:true,args:[W.ea]},{func:"dG",args:[W.ea]},];$=null
 I = I.$finishIsolateConstructor(I)
 $=new I()
 function convertToFastObject(properties) {
